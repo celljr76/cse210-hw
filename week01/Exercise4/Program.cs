@@ -26,7 +26,8 @@ class Program
         int total = numbers.Sum();
         Console.WriteLine($"The sum is : {total}");
         int listCount = numbers.Count;
-        Console.WriteLine($"The average is: {total / listCount}");
+        float average = ((float)total) / listCount;
+        Console.WriteLine($"The average is: {average}");
         Console.WriteLine($"The largest number is: {numbers.Max()}");
     }
 }
