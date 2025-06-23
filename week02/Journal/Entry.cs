@@ -1,10 +1,13 @@
+using System.ComponentModel;
 using System.Text.Encodings.Web;
 
 public class Entry
-{
-    string _promptText = "";
-    string _entryText = "";
-    
 
-    
+{
+    Prompts _prompts = new Prompts();
+    string _promptText = Prompts.GetRandomPrompt();
+    string _entryText = "";
+
+
+
 }
