@@ -1,8 +1,4 @@
 using System;
-using System.Formats.Asn1;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Serialization;
-
 class Program
 {
     static int DisplayMenu()
@@ -19,32 +15,41 @@ class Program
     }
     static void Main(string[] args)
     {
-        List<string> _entries = new List<string>();
         //Console.WriteLine("Hello World! This is the Journal Project.");
         bool makeChoice = true;
 
 
         Console.WriteLine("Welcome to the Journal program!");
+        Entry entry = new Entry();
+        Prompts prompts = new Prompts();
+        Jorunal journal = new Jorunal();
+        DateTime theCurrentDate = DateTime.Now;
 
         while (makeChoice == true)
         {
-            
-           int choice = DisplayMenu();
+            int choice = DisplayMenu();
+            string _promptText1 = prompts.GetRandomPrompt();
+
             if (choice == 1)
             {
-                Console.WriteLine("I love you");
+                entry._promptText = _promptText1;
+                entry._date = theCurrentDate.ToShortDateString();
+                //Console.WriteLine(_promptText);
+                Console.Write("> ");
+                entry._entryText = Console.ReadLine();
+
             }
             else if (choice == 2)
             {
-
+                journal.SaveToFile("entries.txt");
             }
             else if (choice == 3)
             {
-
+                journal.LoadFromFile("entries.txt");
             }
             else if (choice == 4)
             {
-                
+                entry.Display();
             }
             else if (choice == 5)
             {
