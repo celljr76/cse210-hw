@@ -15,41 +15,34 @@ class Program
     }
     static void Main(string[] args)
     {
-        //Console.WriteLine("Hello World! This is the Journal Project.");
         bool makeChoice = true;
 
 
         Console.WriteLine("Welcome to the Journal program!");
-        Entry entry = new Entry();
-        Prompts prompts = new Prompts();
         Jorunal journal = new Jorunal();
-        DateTime theCurrentDate = DateTime.Now;
-
         while (makeChoice == true)
         {
             int choice = DisplayMenu();
-            string _promptText1 = prompts.GetRandomPrompt();
 
             if (choice == 1)
             {
-                entry._promptText = _promptText1;
-                entry._date = theCurrentDate.ToShortDateString();
-                //Console.WriteLine(_promptText);
-                Console.Write("> ");
-                entry._entryText = Console.ReadLine();
+
+                journal.AddEntry();
 
             }
             else if (choice == 2)
             {
-                journal.SaveToFile("entries.txt");
+                //journal.SaveToFile("entries.txt");
+                journal.SaveToFile("entries.csv");
             }
             else if (choice == 3)
             {
-                journal.LoadFromFile("entries.txt");
+                //journal.LoadFromFile("entries.txt");
+                journal.LoadFromFile("entries.csv");
             }
             else if (choice == 4)
             {
-                entry.Display();
+                journal.DisplayAll();
             }
             else if (choice == 5)
             {
@@ -59,3 +52,7 @@ class Program
 
     }
 }
+
+//https://www.bing.com/search?pglt=297&q=how+do+you+print+everything+in+a+list+in+c%23&cvid=9c8e63d792b048fd92521a649b0e0466&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQoxMDIwODZqMGoxqAIAsAIA&FORM=ANNTA1&PC=U531
+// This is the search perameter I used to help with some of my code
+// I believe I was able to save and load my code from a csv file, this is the creativity part I did.

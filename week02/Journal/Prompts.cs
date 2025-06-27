@@ -1,6 +1,6 @@
 public class Prompts
 {
-    public List<string> _prompts;
+    public List<string> _prompts = new List<string>();
     public string GetRandomPrompt()
     {
         _prompts.Add("What was the best part of your day?");
