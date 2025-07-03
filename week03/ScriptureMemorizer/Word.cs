@@ -2,6 +2,10 @@ public class Word
 {
     public string _text;
     public bool _isHidden;
+    public void Words(string _text)
+    {
+        
+    }
     public void Hide()
     {
 
