@@ -9,6 +9,10 @@ public class Word
     {
         _word = _words;
     }
+    public string Render()
+    {
+        return "";
+    }
     public void Hide()
     {
         StringBuilder _stringBuilder = new StringBuilder(_word);
