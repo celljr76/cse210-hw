@@ -1,12 +1,21 @@
-using System.Runtime.CompilerServices;
+
+
 
 public class Scripture
 {
-    public List<Word> _words;
-    static string _text = "Trust in the Lord with all thine heart and lean not unto thine own\nunderstanding; in all thy ways acknowledge him, and he shall direct thy paths.";
-    static char[] _separators = new char[] {' ', ',', ';', '.'};
-    public string[] _word = _text.Split(_separators, StringSplitOptions.RemoveEmptyEntries);
-    
+    public List<Word> _word = new List<Word>();
+    public string _text = "";
+    public char[] _separators = new char[] { ' ', ',', ';', '.' };
+    public Scripture(string _texts)
+    {
+        _text = _texts;
+        string[] _words = _text.Split(_separators, StringSplitOptions.RemoveEmptyEntries);
+        foreach (string i in _words)
+        {
+            _word.Add(new Word (i));
+        } 
+    }
+            
     public void HideRandomWords(int numberToHide)
     {
 

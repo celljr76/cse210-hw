@@ -14,14 +14,12 @@ class Program
     static void Main(string[] args)
     {
         bool _choice = true;
-        Reference _reference = new Reference();
-        Scripture _scripture = new Scripture();
-        Word _word = new Word();
-        
+        string _text = "Trust in the Lord with all thine heart and lean not unto thine own\nunderstanding; in all thy ways acknowledge him, and he shall direct thy paths.";
+        Reference _reference = new Reference("Proverbs",3,5,6);
+        Scripture _scripture = new Scripture(_text);        
         while (_choice == true)
         {
             Console.Clear();
-            _reference.ReferenceMultiple("Proverbs", 3, 5, 6);
             Console.WriteLine(_reference.GetDisplayTextMultiple());
             Console.WriteLine(_scripture.GetDisplayText());
             Console.WriteLine();

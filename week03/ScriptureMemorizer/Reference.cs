@@ -5,16 +5,15 @@ public class Reference
     public int _verse;
     public int _startVerse;
     public int _endverse;
-    public void ReferenceShort(string _bookName, int _chapterNumber, int _verseNumber)
+    public Reference(string _bookName, int _chapterNumber, int _verseNumber)
     {
         _book = _bookName;
         _chapter = _chapterNumber;
         _verse = _verseNumber;
 
-
     }
 
-    public void ReferenceMultiple(string _bookName, int _chapterNumber, int _startVerseNumber, int _endverseNumber)
+    public Reference(string _bookName, int _chapterNumber, int _startVerseNumber, int _endverseNumber)
     {
         _book = _bookName;
         _chapter = _chapterNumber;
