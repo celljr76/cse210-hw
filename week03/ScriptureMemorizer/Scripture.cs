@@ -1,6 +1,3 @@
-
-
-
 public class Scripture
 {
     public List<Word> _word = new List<Word>();
