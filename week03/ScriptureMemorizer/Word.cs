@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public class Word
 {
@@ -9,28 +10,33 @@ public class Word
     {
         _word = _words;
     }
-    public string Render()
-    {
-        return "";
-    }
+
     public void Hide()
     {
-        StringBuilder _stringBuilder = new StringBuilder(_word);
-        _stringBuilder[0] = '_';
+       _isHidden = true;    
     }
 
     public void Show()
     {
-
+        _isHidden = false;
     }
 
     public bool IsHidden()
     {
-        return true;
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-        return _word;
+        string _text = "";
+        if (_isHidden == false)
+        {
+            _text = _word;
+        }
+        else if (_isHidden == true)
+        {
+           _text = new String('_', _word.Length);
+        }
+        return _text;
     }
 }

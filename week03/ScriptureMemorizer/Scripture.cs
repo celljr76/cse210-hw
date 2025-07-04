@@ -4,6 +4,7 @@ public class Scripture
     public string _text = "";
     static char[] _separators = new char[] { ' ', ',', ';', '.' };
     
+    
     public Scripture(string _texts)
     {
         _text = _texts;
@@ -16,11 +17,11 @@ public class Scripture
 
     public void HideRandomWords(int _numberToHide)
     {
-        _word[0].Hide();
+                    
     }
     public string GetDisplayText()
     {
-    
+        
         return _text;
     }
 
