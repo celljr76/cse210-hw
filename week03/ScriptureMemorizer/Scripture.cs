@@ -17,11 +17,11 @@ public class Scripture
 
     public void HideRandomWords(int _numberToHide)
     {
-                    
+        _word[_numberToHide].Hide();              
+
     }
     public string GetDisplayText()
     {
-        
         return _text;
     }
 

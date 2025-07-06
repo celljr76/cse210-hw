@@ -14,24 +14,23 @@ class Program
     static void Main(string[] args)
     {
 
-        //bool _choice = true;
+        bool _choice = true;
         string _text = "Trust in the Lord with all thine heart and lean not unto thine own\nunderstanding; in all thy ways acknowledge him, and he shall direct thy paths.";
         //Reference _reference = new Reference("Proverbs",3,5,6);
         Scripture _scripture = new Scripture(_text);
-        _scripture.HideRandomWords(0);
-        Console.WriteLine(_scripture.GetDisplayText());  
-        //while (_choice == true)
-        //{
-        //Console.Clear();
-        //Console.WriteLine(_reference.GetDisplayTextMultiple());
-        //Console.WriteLine(_scripture.GetDisplayText());
-        //Console.WriteLine();
-        //string _choices = MakeChoice();
-        //if (_choices == "quit")
-        //{
-        //_choice = false;
+        _scripture.HideRandomWords(1);
+        Console.WriteLine(_scripture.GetDisplayText());
+        while (_choice == true)
+        {
+            Console.Clear();
+            //Console.WriteLine(_reference.GetDisplayTextMultiple());
+            Console.WriteLine(_scripture.GetDisplayText());
+            Console.WriteLine();
+            string _choices = MakeChoice();
+            if (_choices == "quit")
+                _choice = false;
 
-        //}
+        }
 
 
     }
