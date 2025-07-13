@@ -11,6 +11,7 @@ public class Activity
         _description = description;
 
     }
+    
 
 
     public int DisplayStartingMessage()
@@ -54,5 +55,11 @@ public class Activity
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }
+    }
+    public void DisplayGetReady()
+    {
+        Console.WriteLine("Get ready...");
+        ShowSpinner(5);
+        Console.WriteLine();
     }
 }

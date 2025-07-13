@@ -19,9 +19,10 @@ class Program
     static void Main(string[] args)
     {
         bool _choices = false;
-
-        
+            
         BreathingActivity breathing = new BreathingActivity("Breathing","relax by walking you through your breathing in and out slowly.\nClear your mind and focus on your breathing");
+        ListingActivity listing = new ListingActivity("Listing", "reflect on the good things in your life by having you list as many things\n as you can in a certain area.");
+        ReflectingActivity reflecting = new ReflectingActivity("Reflecting", "");
         
 
         while (_choices == false)
@@ -41,6 +42,7 @@ class Program
             else if (_choice == 3)
             {
                 ClearMenu();
+                listing.Run();
             }
             else if (_choice == 4)
             {

@@ -12,21 +12,22 @@ public class BreathingActivity : Activity
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(_duration);
         Console.Clear();
-        Console.WriteLine("Get ready...");
-        ShowSpinner(5);
-        Console.WriteLine();
+        DisplayGetReady();
         while (DateTime.Now < futureTime)
         {
+
+            Console.Write("Breathe in ...");
+            ShowCountDown(5);
             Console.WriteLine();
-            Console.WriteLine("Breathe in ...");
+            Console.Write("Breathe out...");
             ShowCountDown(5);
-            Console.WriteLine("Breathe out...");
-            ShowCountDown(5);
+            Console.WriteLine();
+            Console.WriteLine();
         }
         DisplayEndingMessage();
         ShowSpinner(5);
         Console.WriteLine();
         Console.WriteLine($"You have completed another {_duration} seconds of the Breathing Activity.");
-        Thread.Sleep(5000);
+        Thread.Sleep(3000);
     }
 }
