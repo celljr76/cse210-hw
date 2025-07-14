@@ -4,6 +4,7 @@ public class Activity
 
     private string _name;
     private string _description;
+    private int _duration;
 
     public Activity(string name, string description)
     {
@@ -11,10 +12,18 @@ public class Activity
         _description = description;
 
     }
+    public int GetDuration()
+    {
+        return _duration;
+    }
+    public void SetDuration(int duration)
+    {
+        _duration = duration;
+    }
     
 
 
-    public int DisplayStartingMessage()
+    public void DisplayStartingMessage()
     {
         Console.WriteLine($"Welcome to the {_name} Activity.");
         Console.WriteLine();
@@ -22,7 +31,7 @@ public class Activity
         Console.WriteLine();
         Console.Write("How long in seconds, would you like your session to be? ");
         int duration = int.Parse(Console.ReadLine());
-        return duration;
+        SetDuration(duration);
 
     }
     public void DisplayEndingMessage()
@@ -53,7 +62,7 @@ public class Activity
         {
             Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b \b");
+            Console.Write("\b\b   \b\b");
         }
     }
     public void DisplayGetReady()
