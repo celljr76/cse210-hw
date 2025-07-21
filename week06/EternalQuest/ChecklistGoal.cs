@@ -17,13 +17,22 @@ public class ChecklistGoal : Goal
     {
         return _bonus;    
     }
+    public int GetAmountCompleted()
+    {
+        return _amountCompleted;
+    }
     public override void RecordEvent()
     {
-
+        _amountCompleted = GetAmountCompleted() + 1;
     }
     public override bool IsComplete()
     {
-        return true;
+        bool _isComplete = false;
+        if (_target == _amountCompleted)
+        {
+            _isComplete = true;
+        }
+        return _isComplete;
     }
     public override string GetDetailsString()
     {

@@ -6,7 +6,7 @@ public class EternalGoal : Goal
     }
     public override void RecordEvent()
     {
-        throw new NotImplementedException();
+        
     }
     public override bool IsComplete()
     {
@@ -14,6 +14,6 @@ public class EternalGoal : Goal
     }
      public override string GetStringRepresentation()
     {
-        return "EternalGoal";
+        return $"EternalGoal:{GetGoalName()},{GetGoalDescription()},{GetGoalPoints()}";
     }
 }
