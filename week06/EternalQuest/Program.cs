@@ -15,7 +15,6 @@ class Program
             if (_choice == 1)
             {
                 _goalManager.CreateGoal();
-                int.Parse(Console.ReadLine());
             }
             else if (_choice == 2)
             {

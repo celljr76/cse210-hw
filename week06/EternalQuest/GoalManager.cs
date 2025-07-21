@@ -6,7 +6,7 @@ public class GoalManager
 
     public GoalManager()
     {
-
+        _goals = new List<Goal>();
     }
     public void Start()
     {
@@ -28,12 +28,13 @@ public class GoalManager
 
     public void ListGoalNames()
     {
-            foreach (Goal goal in _goals)
+        foreach (Goal goal in _goals)
         {
             string[] parts = goal.GetDetailsString().Split(' ');
             string name = parts[2];
             int index = _goals.IndexOf(goal);
             Console.WriteLine($"{index + 1}. {name}");
+            
         }
         
     }
@@ -44,7 +45,9 @@ public class GoalManager
         {
             int index = _goals.IndexOf(goal);
             Console.WriteLine($"{index + 1}. {goal.GetDetailsString()}");
+
         }
+        
     }
     public void CreateGoal()
     {
@@ -52,7 +55,7 @@ public class GoalManager
         Console.WriteLine("  1. Simple Goal");
         Console.WriteLine("  2. Eternal Goal");
         Console.WriteLine("  3. Checklist Goal");
-        Console.Write("What type of goal would you like to creat? ");
+        Console.Write("What type of goal would you like to create? ");
         int _choice = int.Parse(Console.ReadLine());
         if (_choice == 1)
         {
@@ -63,6 +66,7 @@ public class GoalManager
             Console.Write("What is the amount of points associated with this goal? ");
             int points = int.Parse(Console.ReadLine());
             SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
+            _goals.Add(simpleGoal);
             
         
         }
@@ -93,7 +97,7 @@ public class GoalManager
             Console.WriteLine();
             Console.Write("What is the bonus for accomplishing it that many times? ");
             int bonus = int.Parse(Console.ReadLine());
-            ChecklistGoal checklist = new ChecklistGoal(name, description, points,target,bonus);
+            ChecklistGoal checklist = new ChecklistGoal(name, description, points, target, bonus);
             _goals.Add(checklist);
 
         }
