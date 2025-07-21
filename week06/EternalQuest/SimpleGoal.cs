@@ -7,7 +7,8 @@ public class SimpleGoal : Goal
     }
     public override void RecordEvent()
     {
-        
+        GetGoalPoints();
+        GetDetailsString();
     }
 
     public override bool IsComplete()
@@ -16,7 +17,7 @@ public class SimpleGoal : Goal
     }
      public override string GetStringRepresentation()
     {
-        return $"Simple";
+        return $"SimpleGoal:{GetGoalName()},{GetGoalDescription()},{GetGoalPoints()}";
     }
 
 }

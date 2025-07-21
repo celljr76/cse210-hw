@@ -1,12 +1,19 @@
+using System.Formats.Asn1;
+
 public class GoalManager
 {
     private List<Goal> _goals;
-    private int _score = 0;
-    
+    private int _score;
+
 
     public GoalManager()
     {
         _goals = new List<Goal>();
+        _score = 0;
+    }
+    public int GetScore()
+    {
+        return _score;
     }
     public void Start()
     {
@@ -30,10 +37,9 @@ public class GoalManager
     {
         foreach (Goal goal in _goals)
         {
-            string[] parts = goal.GetDetailsString().Split(' ');
-            string name = parts[2];
+            
             int index = _goals.IndexOf(goal);
-            Console.WriteLine($"{index + 1}. {name}");
+            Console.WriteLine($"{index + 1}. {goal.GetGoalName()}");
             
         }
         
@@ -99,7 +105,6 @@ public class GoalManager
             int bonus = int.Parse(Console.ReadLine());
             ChecklistGoal checklist = new ChecklistGoal(name, description, points, target, bonus);
             _goals.Add(checklist);
-
         }
     }
     public void RecordEvent()
@@ -107,8 +112,9 @@ public class GoalManager
         Console.WriteLine("The goals are:");
         ListGoalNames();
         Console.Write("Which goal did you accomplish? ");
-             
-        
+        int _choice = int.Parse(Console.ReadLine());
+        _goals[_choice - 1].RecordEvent();
+        _score = GetScore() + _goals[_choice - 1].GetGoalPoints();
     }
     public void Savegoals()
     {
@@ -116,11 +122,11 @@ public class GoalManager
         string filename = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            Console.WriteLine(_score);
+            outputFile.WriteLine(_score);
             foreach (Goal goal in _goals)
             {
-                string goals = goal.GetStringRepresentation();
-                Console.WriteLine(goals);
+                
+                outputFile.WriteLine(goal.GetStringRepresentation());
             }
         }
     }

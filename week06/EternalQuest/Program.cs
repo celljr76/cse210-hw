@@ -4,10 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
+        GoalManager _goalManager = new GoalManager();
         int _choice = 0;
         while (_choice != 6)
         {
-            GoalManager _goalManager = new GoalManager();
             _goalManager.DisplayPlayerInfo();
             Console.WriteLine();
             _goalManager.Start();
@@ -18,7 +18,7 @@ class Program
             }
             else if (_choice == 2)
             {
-                _goalManager.ListGoalNames();
+                _goalManager.ListGoalDetails();
             }
             else if (_choice == 3)
             {
