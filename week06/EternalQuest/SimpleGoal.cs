@@ -7,8 +7,8 @@ public class SimpleGoal : Goal
     }
     public override void RecordEvent()
     {
-        GetGoalPoints();
-        GetDetailsString();
+        string[] parts = GetDetailsString().Split(' ');
+        
     }
 
     public override bool IsComplete()
