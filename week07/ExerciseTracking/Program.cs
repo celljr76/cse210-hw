@@ -4,15 +4,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the ExerciseTracking Project.");
-        var myList = new List<int> { 1, 2, 3, 4, 5 };
-for (int i = 0; i < myList.Count; i++)
-{
-    if (i == 2) // Skip index 2
-        continue;
+        List<Activity> activities = new List<Activity>();
 
-    Console.WriteLine(myList[i]);
-}
+    RunningActivity running = new RunningActivity("Running",30);
+    running.SetDistance(1.5);
+    CyclingActivity cycling = new CyclingActivity("Cycling",60);
+    cycling.SetDistance(6.5);
+    SwimmingActivity swimming = new SwimmingActivity("Swimming",30,100);
+
+    activities.Add(running);
+    activities.Add(cycling);
+    activities.Add(swimming);
+
+    foreach (Activity activity in activities)
+    {
+        activity.GetSummary();
+    }
 
     }
 }
