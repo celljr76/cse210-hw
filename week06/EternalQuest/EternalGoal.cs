@@ -6,11 +6,12 @@ public class EternalGoal : Goal
     }
     public override void RecordEvent()
     {
+        Console.WriteLine($"Congratulations! You have earned {GetGoalPoints()} points!");
         
     }
     public override bool IsComplete()
     {
-        return true;
+        return false;
     }
      public override string GetStringRepresentation()
     {

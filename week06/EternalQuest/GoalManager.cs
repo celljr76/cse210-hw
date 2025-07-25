@@ -1,5 +1,3 @@
-using System.Formats.Asn1;
-
 public class GoalManager
 {
     private List<Goal> _goals;
@@ -37,12 +35,12 @@ public class GoalManager
     {
         foreach (Goal goal in _goals)
         {
-            
+
             int index = _goals.IndexOf(goal);
             Console.WriteLine($"{index + 1}. {goal.GetGoalName()}");
-            
+
         }
-        
+
     }
 
     public void ListGoalDetails()
@@ -53,7 +51,7 @@ public class GoalManager
             Console.WriteLine($"{index + 1}. {goal.GetDetailsString()}");
 
         }
-        
+
     }
     public void CreateGoal()
     {
@@ -73,8 +71,8 @@ public class GoalManager
             int points = int.Parse(Console.ReadLine());
             SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
             _goals.Add(simpleGoal);
-            
-        
+
+
         }
         else if (_choice == 2)
         {
@@ -113,7 +111,9 @@ public class GoalManager
         Console.Write("Which goal did you accomplish? ");
         int _choice = int.Parse(Console.ReadLine());
         _goals[_choice - 1].RecordEvent();
-        _score = GetScore() + _goals[_choice - 1].GetGoalPoints();
+        _score = GetScore() + _goals[_choice - 1].GetTotalPoints();
+        Console.WriteLine($"You now have {GetScore()} points.");
+        Console.WriteLine();
     }
     public void Savegoals()
     {
@@ -124,7 +124,6 @@ public class GoalManager
             outputFile.WriteLine(_score);
             foreach (Goal goal in _goals)
             {
-                
                 outputFile.WriteLine(goal.GetStringRepresentation());
             }
         }
@@ -136,31 +135,37 @@ public class GoalManager
         string filename = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(filename);
         _score = int.Parse(lines[0]);
-        for (int i = 0; i < lines.Count(); i++)
+        foreach (string line in lines)
         {
-            if (i == 0)
-                continue;
-            foreach (string line in lines)
+            string _string = line.Split(seperators)[0];
+            if (_string != null)
             {
-                string[] parts = line.Split(seperators);
-                if (parts[0] == "SimpleGoal")
+                int simpleTrue = String.Compare(_string, "SimpleGoal");
+                int eternalTrue = String.Compare(line.Split(seperators)[0], "EternalGoal");
+                int checkListTrue = String.Compare(line.Split(seperators)[0], "ChecklistGoal");
+
+                if (simpleTrue == 0)
                 {
+                    string[] parts = line.Split(seperators);
                     SimpleGoal simpleGoal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
                     _goals.Add(simpleGoal);
                 }
-                else if (parts[0] == "EternalGoal")
+
+                else if (eternalTrue == 0)
                 {
+                    string[] parts = line.Split(seperators);
                     EternalGoal eternalGoal = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
                     _goals.Add(eternalGoal);
                 }
-                else if (parts[0] == "ChecklistGoal")
+                else if (checkListTrue == 0)
                 {
-                    ChecklistGoal checklistGoal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
-                    _goals.Add(checklistGoal);
+                    string[] parts = line.Split(seperators);
+                    ChecklistGoal checkListGoal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
+                    _goals.Add(checkListGoal);
+
                 }
-                
             }
+
         }
-        
     }
 }

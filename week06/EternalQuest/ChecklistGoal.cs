@@ -21,9 +21,28 @@ public class ChecklistGoal : Goal
     {
         return _amountCompleted;
     }
+
+    public override int GetTotalPoints()
+    {
+        int _totalPoints = GetGoalPoints();
+        if (_amountCompleted == _target)
+        {
+            _totalPoints = GetGoalPoints() + GetBonus();
+        }
+        return _totalPoints;
+    }
+
     public override void RecordEvent()
     {
         _amountCompleted = GetAmountCompleted() + 1;
+        if (_amountCompleted == _target)
+        {
+            Console.WriteLine($"Congratulations! You have earned {GetTotalPoints()} points!");
+        }
+        else
+        {
+            Console.WriteLine($"Congratulations! You have earned {GetGoalPoints()} points!");
+        }        
     }
     public override bool IsComplete()
     {
@@ -36,12 +55,22 @@ public class ChecklistGoal : Goal
     }
     public override string GetDetailsString()
     {
-        return $"[ ] {GetGoalName()} ({GetGoalDescription()}) -- Currently completed: {_amountCompleted}/{_target}";
+        string _detailsString = "";
+		if (_target == _amountCompleted)
+		{
+			_detailsString = $"[X] {GetGoalName()} ({GetGoalDescription()}) -- Currently completed: {_amountCompleted}/{_target}"; 
+		}
+		else
+		{
+		_detailsString = $"[ ] {GetGoalName()} ({GetGoalDescription()}) -- Currently completed: {_amountCompleted}/{_target}";
+		
+		}
+		return _detailsString;
     }
     public override string GetStringRepresentation()
     {
 
-        return $"Checklist:{GetGoalName()},{GetGoalDescription()},{GetGoalPoints()},{GetTarget()},{GetBonus()}";
+        return $"ChecklistGoal:{GetGoalName()},{GetGoalDescription()},{GetGoalPoints()},{GetTarget()},{GetBonus()}";
     }
 
 }

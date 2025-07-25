@@ -18,10 +18,15 @@ public abstract class Goal
     {
         return _description;
     }
-    public int GetGoalPoints()
+    public virtual int GetGoalPoints()
     {
         return _points;
     }
+    public virtual int GetTotalPoints()
+    {
+        return GetGoalPoints();
+    }
+    
 
     public abstract void RecordEvent();
 
@@ -29,7 +34,19 @@ public abstract class Goal
 
     public virtual string GetDetailsString()
     {
-        return $"[ ] {_shortName} ({_description})";
+    string _detailsString = "";
+	bool _isComplete = IsComplete();
+
+	if (_isComplete == true)
+	{
+		_detailsString = $"[X] {_shortName} ({_description})";
+	}
+	else if (_isComplete == false)
+	{
+		_detailsString = $"[ ] {_shortName} ({_description})";
+	}
+	return _detailsString;
+
     }
     public abstract string GetStringRepresentation();
 }

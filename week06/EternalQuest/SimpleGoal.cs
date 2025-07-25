@@ -1,19 +1,20 @@
 public class SimpleGoal : Goal
 {
-    private bool _isComplete;
+    private bool _isComplete = false;
     public SimpleGoal(string name, string description,int points) : base(name,description,points)
     {
 
     }
     public override void RecordEvent()
     {
-        string[] parts = GetDetailsString().Split(' ');
+        Console.WriteLine($"Congratulations! You have earned {GetGoalPoints()} points!");
+        _isComplete = true;
         
     }
 
     public override bool IsComplete()
     {
-        return true;
+        return _isComplete;
     }
      public override string GetStringRepresentation()
     {
